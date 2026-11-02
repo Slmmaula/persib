@@ -1,9 +1,5 @@
 import type { AboutFact, AboutHonour, HistoryMilestone } from "@/lib/types";
 
-// Ringkasan dari media dan Wikipedia (diperiksa 28 Oktober 2026). Item todo wajib diverifikasi dengan klub.
-// Sumber berbeda soal tanggal berdiri: 14 Maret 1933 (Persib) dan 5 Januari 1919 (BIVB).
-// TODO: pastikan tahun berdiri, tahun gelar Perserikatan, dan gelar era Liga 1 dan Super League.
-
 export const about = {
   title: "Tentang PERSIB",
   heroImage: "/about/about-img.jpg",
@@ -108,13 +104,13 @@ export const honours: AboutHonour[] = [
     title: "Indonesia Super League",
     detail: "2014",
     count: 1,
-    icon: "award",
+    icon: "trophy",
   },
   {
     id: "era-terkini",
-    title: "Era Liga 1 dan Super League",
+    title: "Super League",
     detail: "2023/24, 2024/25, 2025/26",
-    count: null,
-    icon: "shield",
+    count: 3,
+    icon: "trophy",
   },
 ];
