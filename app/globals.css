@@ -1,26 +1,233 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme static {
+  --color-*: initial;
+  --color-canvas-edge: #0d1448;
+  --color-canvas-mid: #171e66;
+  --color-canvas-glow: #232c82;
+  --color-surface-flat: #1e2d88;
+  --color-surface-card: #1a246b;
+  --color-surface-deep: #0b0f3e;
+  --color-surface-panel: #1c2472;
+  --color-blue-number: #1b30b0;
+  --color-blue-badge: #2819e8;
+  --color-accent: #ffff00;
+  --color-on-accent: #0f1b6b;
+  --color-white: #ffffff;
+  --color-ink: #0a0a14;
+  --color-ink-muted: #5f6370;
+  --color-link-on-light: #1b30b0;
+  --color-muted: #a3aae6;
+  --color-glass: rgb(255 255 255 / 0.05);
+  --color-glass-border: rgb(255 255 255 / 0.12);
+  --color-glass-hover: rgb(255 255 255 / 0.1);
+  --color-glass-circle: rgb(255 255 255 / 0.06);
+  --color-pill-idle: rgb(255 255 255 / 0.3);
+  --color-pill-idle-text: rgb(255 255 255 / 0.85);
+  --color-score-surface: rgb(77 102 255 / 0.12);
+  --color-ring-track: rgb(255 255 255 / 0.22);
+  --color-ring-arc: rgb(255 255 255 / 0.6);
+  --color-field-border: rgb(255 255 255 / 0.5);
+  --color-result-win: #15803d;
+  --color-result-draw: #6b7280;
+  --color-result-loss: #b91c1c;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bebas), Impact, "Arial Narrow", sans-serif;
+  --text-hero: clamp(2.25rem, min(3.75vw, 6.67dvh), 4.5rem);
+  --text-hero--line-height: 1.15;
+  --text-display: clamp(2.5rem, 5vw, 6rem);
+  --text-display--line-height: 1.05;
+  --text-given: clamp(1.5rem, 2.5vw, 3rem);
+  --text-given--line-height: 1.1;
+  --text-surname: clamp(3.25rem, 5.2vw, 6.25rem);
+  --text-surname--line-height: 1;
+  --text-jersey: clamp(2.5rem, 4.6vw, 5.5rem);
+  --text-jersey--line-height: 1;
+  --text-stat: clamp(2rem, 2.5vw, 3rem);
+  --text-stat--line-height: 1.1;
+  --text-ring: clamp(1.5rem, 1.8vw, 2.125rem);
+  --text-ring--line-height: 1.1;
+  --text-card-title: clamp(1.125rem, 1.05vw, 1.25rem);
+  --text-card-title--line-height: 1.3;
+  --text-nav: 0.8125rem;
+  --text-nav--line-height: 1;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1;
+  --text-section: clamp(1.75rem, 2.5vw, 3rem);
+  --text-section--line-height: 1.15;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --tracking-label: 0.08em;
+  --tracking-nav: 0.03em;
+
+  --radius-*: initial;
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-pill: 9999px;
+  --radius-panel: 1.25rem;
+
+  --shadow-*: initial;
+  --shadow-lift: 0 24px 48px -24px rgb(4 6 36 / 0.7);
+
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --breakpoint-*: initial;
+  --breakpoint-xs: 22.5rem;
+  --breakpoint-sm: 30rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+  --breakpoint-3xl: 120rem;
+
+  --spacing-page: clamp(1.25rem, 4.8vw, 5.75rem);
+  --spacing-header: calc(4.5rem + env(safe-area-inset-top, 0px));
+  --spacing-nav: clamp(1.25rem, 3.1vw, 3.75rem);
+  --spacing-nav-offset: clamp(1.5rem, 5.5vw, 6.6rem);
+  --spacing-panel: clamp(22rem, 24.7vw, 29.625rem);
+  --spacing-panel-pad: clamp(1.25rem, calc(6.875vw - 4rem), 4.25rem);
+  --spacing-hero-cards: clamp(7rem, 16.67dvh, 11.25rem);
+  --spacing-card-pad: clamp(1.25rem, 3.07vw, 3.6875rem);
+
+  --text-micro: 0.625rem;
+  --text-micro--line-height: 1.2;
+
+  --animate-page-enter: page-enter var(--duration-base) var(--ease-brand) backwards;
+
+  @keyframes page-enter {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+
+  --animate-caret: caret 1s steps(1, end) infinite;
+
+  @keyframes caret {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --duration-fast: 250ms;
+  --duration-base: 400ms;
+  --duration-slow: 600ms;
+}
+  @media (min-width: 80rem) {
+  :root {
+    --spacing-header: clamp(6rem, 8vw, 9.625rem);
+  }
+}
+
+@layer base {
+  html {
+    background-color: var(--color-canvas-edge);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (min-width: 120rem) {
+    html {
+      font-size: min(calc(100vw / 120), 40px);
+    }
+  }
+
+  body {
+    min-height: 100dvh;
+    overflow-x: hidden;
+    font-family: var(--font-body);
+    color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 120rem;
+  margin-inline: auto;
+  padding-left: max(var(--spacing-page), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--spacing-page), env(safe-area-inset-right, 0px));
+}
+
+@utility mask-fade-y {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-white) 22%,
+    var(--color-white) 78%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-white) 22%,
+    var(--color-white) 78%,
+    transparent
+  );
+}
+
+@utility mask-fade-b {
+  mask-image: linear-gradient(to bottom, var(--color-white) 62%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, var(--color-white) 62%, transparent);
+}
+
+.app-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 72% 160% at 60% 100%,
+    var(--color-canvas-glow) 0%,
+    var(--color-canvas-mid) 45%,
+    var(--color-canvas-edge) 90%
+  );
+}
+
+@media (max-width: 47.99rem) {
+  .app-bg {
+    background: radial-gradient(
+      ellipse 150% 80% at 55% 100%,
+      var(--color-canvas-glow) 0%,
+      var(--color-canvas-mid) 50%,
+      var(--color-canvas-edge) 100%
+    );
+  }
 }
